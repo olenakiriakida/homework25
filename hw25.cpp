@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 class MusicalAbility 
@@ -40,6 +40,15 @@ public:
     virtual void PrintBand() const = 0;
 };
 
+class Cream : public Band
+{
+public:
+    void PrintBand() const
+    {
+        cout << "Cream\n";
+    }
+};
+
 class ConflictType
 {
 public:
@@ -64,42 +73,27 @@ public:
     }
 };
 
-class EricClapton : public Band, public GuitarAbility, public Peaceful
+class EricClapton : public Cream, public GuitarAbility, public Peaceful
 {
 public:
-    void PrintBand() const
-    {
-        cout << "Eric Clapton\n";
-    }
-
     void UseAbility() const
     {
         UseMusicalAbility();
     }
 };
 
-class JackBruce : public Band, public BassAbility, public Conflict
+class JackBruce : public Cream, public BassAbility, public Conflict
 {
 public:
-    void PrintBand() const
-    {
-        cout << "Jack Bruce\n";
-    }
-
     void UseAbility() const
     {
         UseMusicalAbility();
     }
 };
 
-class GingerBaker : public Band, public DrumAbility, public Conflict
+class GingerBaker : public Cream, public DrumAbility, public Conflict
 {
 public:
-    void PrintBand() const
-    {
-        cout << "Ginger Baker\n";
-    }
-
     void UseAbility() const
     {
         UseMusicalAbility();
@@ -113,17 +107,17 @@ int main()
     EricClapton eric;
     eric.PrintBand();
     eric.PrintConflictType();
-    eric.UseAbility();
+    eric.UseMusicalAbility();
     cout << "\n";
 
     JackBruce jack;
     jack.PrintBand();
     jack.PrintConflictType();
-    jack.UseAbility();
+    jack.UseMusicalAbility();
     cout << "\n";
 
     GingerBaker ginger;
     ginger.PrintBand();
     ginger.PrintConflictType();
-    ginger.UseAbility();
+    ginger.UseMusicalAbility();
 }
